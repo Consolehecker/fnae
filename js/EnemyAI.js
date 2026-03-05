@@ -461,8 +461,7 @@ class EnemyAI {
         console.log(`Epstein will spawn in ${this.currentEpsteinConfig.spawnDelay / 1000} seconds...`);
         
         // 根据配置延迟后EP出场
-        const spawnTimer = setTimeout(() => {
-            console.log(`⏰ Spawn timer triggered after ${this.currentEpsteinConfig.spawnDelay}ms`);
+        this.epstein.spawnTimer = setTimeout(() => {
             this.spawnEpstein();
         }, this.currentEpsteinConfig.spawnDelay);
         
@@ -558,6 +557,10 @@ class EnemyAI {
 
     // 停止AI
     stop() {
+        if (this.epstein.spawnTimer) {
+            clearTimeout(this.epstein.spawnTimer);
+            this.epstein.spawnTimer = null;
+        }
         if (this.epstein.movementTimer) {
             clearTimeout(this.epstein.movementTimer);  // 改为 clearTimeout
             this.epstein.movementTimer = null;
