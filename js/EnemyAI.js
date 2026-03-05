@@ -175,7 +175,7 @@ class EnemyAI {
             movementTimer: null,
             movementInterval: 12000, // 移动检查间隔
             hasMovedOnce: false, // 是否已经移动过一次
-            hasSpawned: false, // 是否已经出场
+            hasSpawned: true, // 是否已经出场
         };
         
         // 特朗普的状态
